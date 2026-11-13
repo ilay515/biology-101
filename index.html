@@ -160,6 +160,11 @@
         </div>
 
         <div class="toolbar-right">
+          <!-- Quiz Me Button -->
+          <button id="toolbarQuizBtn" class="icon-button" aria-label="בחן אותי" title="Quiz Me (Q)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </button>
+
           <!-- Download Active Chapter/Unit PDF -->
           <a id="downloadChapterBtn" href="#" class="btn btn-primary download-action-btn" download title="Download this unit PDF">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -186,6 +191,10 @@
           <h2 id="cardChapterTitle" class="card-title">Chapter 1: Biology and Its Themes</h2>
           <p id="cardChapterSummary" class="card-summary">Loading chapter overview and key concepts...</p>
           <div id="cardConceptsList" class="card-concepts"></div>
+          <button id="cardQuizBtn" class="quiz-trigger-btn" title="בחן אותי על הפרק">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span>בחן אותי</span>
+          </button>
         </div>
 
         <!-- High-Performance Canvas Pages Container -->
@@ -239,11 +248,16 @@
     </main>
   </div>
 
+  <!-- Quiz Modal (populated dynamically by quiz.js) -->
+  <div id="quizModal" class="quiz-modal-backdrop" hidden></div>
+
   <!-- Toast Notification Capsule -->
   <div id="toastNotification" class="toast-notification" aria-live="assertive" hidden>
     <span id="toastMessage">Chapter updated</span>
   </div>
 
   <script src="./app.js"></script>
+  <script src="./quiz-data.js"></script>
+  <script src="./quiz.js"></script>
 </body>
 </html>

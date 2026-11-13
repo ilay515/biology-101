@@ -1694,3 +1694,509 @@ a {
     max-width: 120px;
   }
 }
+
+
+/* ==========================================================================
+   Quiz Modal & Assessment Component Styles
+   ========================================================================== */
+
+:root {
+  --accent-red: #d64545;
+  --accent-red-light: rgba(214, 69, 69, 0.1);
+}
+
+[data-theme="dark"] {
+  --accent-red: #e06060;
+  --accent-red-light: rgba(224, 96, 96, 0.14);
+}
+
+/* 1. Backdrop */
+.quiz-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.quiz-modal-backdrop[hidden] {
+  display: none !important;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 2. Modal Card */
+.quiz-modal-card {
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-modal);
+  overflow: hidden;
+  animation: modalPop 0.3s var(--ease-spring);
+}
+
+/* 3. Modal Header */
+.quiz-modal-header {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* 4. Close Button */
+.quiz-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--text-secondary);
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.quiz-close-btn:hover {
+  background-color: rgba(0, 0, 0, 0.09);
+  color: var(--text-primary);
+}
+
+.quiz-close-btn:active {
+  transform: scale(0.94);
+}
+
+[data-theme="dark"] .quiz-close-btn {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .quiz-close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+  color: var(--text-primary);
+}
+
+/* 5. Progress Text */
+.quiz-progress-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  direction: rtl;
+}
+
+/* 6. Progress Bar Container */
+.quiz-progress-bar-container {
+  height: 3px;
+  background-color: var(--bg-input);
+  width: 100%;
+  overflow: hidden;
+}
+
+/* 7. Progress Bar Fill */
+.quiz-progress-bar-fill {
+  height: 100%;
+  background-color: var(--accent-blue);
+  transition: width 0.4s var(--ease-spring);
+  border-radius: 2px;
+}
+
+/* 8. Modal Body */
+.quiz-modal-body {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+  direction: rtl;
+  text-align: right;
+}
+
+/* 9. Chapter Context */
+.quiz-chapter-context {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 16px;
+}
+
+/* 10. Question Card */
+.quiz-question-card {
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+/* 11. Question Text */
+.quiz-question-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+/* 12. Options List */
+.quiz-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 13. Option */
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-subtle);
+  background-color: var(--bg-card);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  direction: rtl;
+  min-height: 44px;
+  user-select: none;
+}
+
+.quiz-option:hover {
+  border-color: var(--accent-blue-light);
+  background-color: rgba(59, 110, 165, 0.04);
+}
+
+[data-theme="dark"] .quiz-option:hover {
+  border-color: var(--accent-blue-light);
+  background-color: rgba(91, 142, 194, 0.06);
+}
+
+.quiz-option.selected {
+  border-color: var(--accent-blue);
+  background-color: var(--accent-blue-light);
+}
+
+.quiz-option.correct {
+  border-color: var(--accent-green);
+  background-color: var(--accent-green-light);
+}
+
+.quiz-option.incorrect {
+  border-color: var(--accent-red);
+  background-color: var(--accent-red-light);
+}
+
+.quiz-option.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* 14. Option Indicator */
+.quiz-option-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.quiz-option.selected .quiz-option-indicator {
+  background-color: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: #ffffff;
+}
+
+.quiz-option.correct .quiz-option-indicator {
+  background-color: var(--accent-green);
+  border-color: var(--accent-green);
+  color: #ffffff;
+}
+
+.quiz-option.incorrect .quiz-option-indicator {
+  background-color: var(--accent-red);
+  border-color: var(--accent-red);
+  color: #ffffff;
+}
+
+/* 15. Option Text */
+.quiz-option-text {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.4;
+  flex: 1;
+}
+
+/* 16. Explanation Box */
+.quiz-explanation-box {
+  margin-top: 12px;
+  padding: 14px 16px;
+  background-color: rgba(72, 139, 99, 0.08);
+  border: 1px solid rgba(72, 139, 99, 0.2);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  direction: rtl;
+}
+
+.quiz-explanation-box[hidden] {
+  display: none !important;
+}
+
+[data-theme="dark"] .quiz-explanation-box {
+  background-color: rgba(89, 166, 119, 0.12);
+  border-color: rgba(89, 166, 119, 0.25);
+}
+
+/* 17. Action Button */
+.quiz-action-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent-blue);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s ease;
+  margin-top: 16px;
+}
+
+.quiz-action-btn:hover {
+  background-color: var(--accent-blue-hover);
+}
+
+.quiz-action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.quiz-action-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* 18. Results View */
+.quiz-results-view {
+  padding: 32px 24px;
+  text-align: center;
+  direction: rtl;
+}
+
+.quiz-results-view[hidden] {
+  display: none !important;
+}
+
+/* 19. Results Emoji */
+.quiz-results-emoji {
+  font-size: 48px;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+/* 20. Results Title */
+.quiz-results-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+/* 21. Results Score */
+.quiz-results-score {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+/* 22. Results Bar Container */
+.quiz-results-bar-container {
+  height: 8px;
+  background-color: var(--bg-input);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+/* 23. Results Bar Fill */
+.quiz-results-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.8s var(--ease-spring);
+  background-color: var(--accent-blue);
+}
+
+.quiz-results-bar-fill.score-high,
+.quiz-results-bar-fill.score-green,
+.quiz-results-bar-fill[data-score="high"] {
+  background-color: var(--accent-green);
+}
+
+.quiz-results-bar-fill.score-medium,
+.quiz-results-bar-fill.score-blue,
+.quiz-results-bar-fill[data-score="medium"] {
+  background-color: var(--accent-blue);
+}
+
+.quiz-results-bar-fill.score-low,
+.quiz-results-bar-fill.score-red,
+.quiz-results-bar-fill[data-score="low"] {
+  background-color: var(--accent-red);
+}
+
+/* 24. Results Feedback */
+.quiz-results-feedback {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* 25. Results Actions */
+.quiz-results-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.quiz-retry-btn {
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  background-color: rgba(0, 0, 0, 0.04);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="dark"] .quiz-retry-btn {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.quiz-retry-btn:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .quiz-retry-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.quiz-retry-btn:active {
+  transform: scale(0.98);
+}
+
+.quiz-close-results-btn {
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent-blue);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quiz-close-results-btn:hover {
+  background-color: var(--accent-blue-hover);
+}
+
+.quiz-close-results-btn:active {
+  transform: scale(0.98);
+}
+
+/* 26. Chapter Header Trigger Button */
+.quiz-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: var(--accent-blue);
+  color: #ffffff;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s ease;
+  margin-top: 12px;
+}
+
+.quiz-trigger-btn:hover {
+  background-color: var(--accent-blue-hover);
+  transform: translateY(-1px);
+}
+
+.quiz-trigger-btn:active {
+  transform: scale(0.97);
+}
+
+/* 27. Mobile Responsive Styles */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 860px) {
+  .quiz-modal-card {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border-radius: 0;
+    animation: slideUp 0.35s var(--ease-spring);
+  }
+
+  .quiz-modal-body {
+    padding: 16px;
+  }
+
+  .quiz-question-text {
+    font-size: 15px;
+  }
+
+  .quiz-option {
+    min-height: 48px;
+  }
+
+  .quiz-results-actions {
+    flex-direction: column;
+  }
+}

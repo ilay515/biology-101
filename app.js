@@ -844,6 +844,24 @@
     // Theme Toggle
     elements.themeToggleBtn.addEventListener('click', toggleTheme);
 
+    // Quiz Trigger Buttons
+    const toolbarQuizBtn = document.getElementById('toolbarQuizBtn');
+    const cardQuizBtn = document.getElementById('cardQuizBtn');
+    if (toolbarQuizBtn) {
+      toolbarQuizBtn.addEventListener('click', () => {
+        if (window.QuizEngine && state.currentChapter) {
+          QuizEngine.open(state.currentChapter.id);
+        }
+      });
+    }
+    if (cardQuizBtn) {
+      cardQuizBtn.addEventListener('click', () => {
+        if (window.QuizEngine && state.currentChapter) {
+          QuizEngine.open(state.currentChapter.id);
+        }
+      });
+    }
+
     // Keyboard Shortcuts
     document.addEventListener('keydown', (e) => {
       // Don't intercept if inside input or select
@@ -907,8 +925,17 @@
           }
           break;
         case 'Escape':
-          closeModal();
+          if (window.QuizEngine) QuizEngine.close();
           closeMobileSidebar();
+          break;
+        case 'q':
+        case 'Q':
+          if (!e.metaKey && !e.ctrlKey) {
+            e.preventDefault();
+            if (window.QuizEngine && state.currentChapter) {
+              QuizEngine.open(state.currentChapter.id);
+            }
+          }
           break;
       }
     });
@@ -953,6 +980,11 @@
     const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
     return escapeHtml(text).replace(regex, '<mark>$1</mark>');
   }
+
+  // Expose current chapter for quiz engine
+  window.getAppState = function() {
+    return { currentChapter: state.currentChapter };
+  };
 
   // Start app on DOMContentLoaded
   if (document.readyState === 'loading') {
