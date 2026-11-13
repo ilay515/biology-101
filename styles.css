@@ -142,6 +142,7 @@ a {
   display: flex;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   position: relative;
   overflow: hidden;
 }
@@ -1536,10 +1537,16 @@ a {
 
   /* Streamlined Mobile Toolbar */
   .reader-toolbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 0 10px;
     padding-top: env(safe-area-inset-top, 0);
     height: calc(var(--toolbar-height) + env(safe-area-inset-top, 0));
     gap: 6px;
+    flex-shrink: 0;
+    z-index: 100;
   }
 
   .toolbar-left {
@@ -1549,13 +1556,9 @@ a {
   }
 
   .chapter-info-pill {
-    max-width: 140px;
+    max-width: 150px;
     padding: 3px 8px;
     gap: 5px;
-  }
-
-  .unit-tag {
-    font-size: 10px;
   }
 
   .chapter-title-text {
@@ -1688,9 +1691,6 @@ a {
 
 @media (max-width: 480px) {
   .chapter-info-pill {
-    max-width: 110px;
-  }
-  .unit-tag {
-    display: none;
+    max-width: 120px;
   }
 }

@@ -313,7 +313,9 @@
     document.title = `Ch. ${chapter.chapterNumber}: ${chapter.title} — Biology: A Global Approach`;
 
     // Update Toolbar Badges & Chapter Info
-    elements.currentUnitTag.textContent = chapter.unitGroup || 'Unit 1';
+    if (elements.currentUnitTag) {
+      elements.currentUnitTag.textContent = chapter.unitGroup || 'Unit 1';
+    }
     elements.currentChapterTitle.textContent = `Ch. ${chapter.chapterNumber}: ${chapter.title}`;
 
     // Update Chapter Header Card
