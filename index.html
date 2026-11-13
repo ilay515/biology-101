@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Biology: A Global Approach (11th Edition) - Interactive Unit & Chapter Reader for students and educators.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121214" media="(prefers-color-scheme: dark)">
+  <title>Biology: A Global Approach (11th Edition) — Chapter Reader</title>
+  
+  <link rel="icon" type="image/svg+xml" href="./assets/icon.svg">
+  <link rel="stylesheet" href="./styles.css">
+
+  <!-- PDF.js library with local vendor and fallback -->
+  <script src="./assets/vendor/pdf.min.js"></script>
+</head>
+<body>
+  <div id="app" class="app-layout">
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div id="sidebarBackdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar" aria-label="Book Navigation">
+      <div class="sidebar-header">
+        <div class="brand">
+          <div class="brand-icon-wrapper">
+            <svg class="brand-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="url(#brandGradient)"/>
+              <path d="M10 9C10 7.89543 10.8954 7 12 7H20C21.1046 7 22 7.89543 22 9V23C22 24.1046 21.1046 25 20 25H12C10.8954 25 10 24.1046 10 23V9Z" fill="white" fill-opacity="0.2"/>
+              <path d="M12 11H20M12 15H18M12 19H16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="21" cy="20" r="3" fill="#34C759"/>
+              <defs>
+                <linearGradient id="brandGradient" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#0071E3"/>
+                  <stop stop-color="#42A5F5"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="brand-meta">
+            <h1 class="brand-title">Biology</h1>
+            <span class="brand-subtitle">A Global Approach</span>
+          </div>
+        </div>
+        <div class="header-actions">
+          <span class="edition-badge">11th Edition</span>
+          <button id="closeSidebarBtn" class="icon-button mobile-only" aria-label="Close Sidebar" title="Close Sidebar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="authors-card">
+        <p class="authors-label">Pearson Global Edition</p>
+        <p class="authors-names">Campbell · Urry · Cain · Wasserman · Minorsky · Reece</p>
+      </div>
+
+      <!-- Search & Filters -->
+      <div class="search-section">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="search" id="chapterSearch" placeholder="Search chapters, concepts..." autocomplete="off" spellcheck="false" aria-label="Search chapters and concepts">
+          <span class="search-kbd-hint">/</span>
+          <button id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search" hidden>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <div class="filter-pills" role="tablist" aria-label="Filter units">
+          <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">All (17)</button>
+          <button class="filter-pill" data-filter="unit-1" role="tab" aria-selected="false">Unit 1</button>
+          <button class="filter-pill" data-filter="unit-2" role="tab" aria-selected="false">Unit 2</button>
+          <button class="filter-pill" data-filter="unit-3" role="tab" aria-selected="false">Unit 3</button>
+        </div>
+      </div>
+
+      <!-- Unit & Chapter Navigation Tree -->
+      <div class="nav-tree-container">
+        <div id="searchStats" class="search-stats" hidden></div>
+        <nav id="navTree" class="nav-tree" aria-label="Table of Contents">
+          <!-- Dynamically populated by app.js -->
+          <div class="tree-loading">
+            <div class="skeleton skeleton-row"></div>
+            <div class="skeleton skeleton-row"></div>
+            <div class="skeleton skeleton-row"></div>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <a id="sidebarDownloadUnitBtn" class="btn btn-secondary full-width download-unit-trigger" href="#" download title="Download active unit PDF">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span id="sidebarDownloadUnitText">Download Unit PDF</span>
+        </a>
+        <div class="footer-meta">
+          <span>GitHub Pages Hostable</span>
+          <span class="dot-separator">·</span>
+          <span>Offline Ready</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Reader Viewport -->
+    <main id="readerContainer" class="reader-container">
+      <!-- Reader Floating/Docked Toolbar -->
+      <header id="readerToolbar" class="reader-toolbar">
+        <div class="toolbar-left">
+          <button id="toggleSidebarBtn" class="icon-button" aria-label="Toggle Sidebar" title="Toggle Sidebar (⌘B)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          
+          <div class="chapter-info-pill">
+            <span id="currentUnitTag" class="unit-tag">Unit 1</span>
+            <span id="currentChapterTitle" class="chapter-title-text">Chapter 1: Biology and Its Themes</span>
+          </div>
+        </div>
+
+        <div class="toolbar-center">
+          <!-- Chapter Paging Navigation -->
+          <div class="segmented-control" role="group" aria-label="Chapter Navigation">
+            <button id="prevChapterBtn" class="segmented-button" title="Previous Chapter ([)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              <span class="btn-label-desktop">Prev</span>
+            </button>
+            <button id="nextChapterBtn" class="segmented-button" title="Next Chapter (])">
+              <span class="btn-label-desktop">Next</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+
+          <!-- Page in Chapter controls -->
+          <div class="page-controls-group">
+            <button id="prevPageBtn" class="icon-button-small" title="Previous Page (k / ↑)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+            </button>
+            <div class="page-counter">
+              <input type="number" id="pageNumberInput" min="1" value="1" aria-label="Current Page">
+              <span class="page-total">/ <span id="totalPagesCount">25</span></span>
+            </div>
+            <button id="nextPageBtn" class="icon-button-small" title="Next Page (j / ↓)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </div>
+
+          <!-- Zoom Controls -->
+          <div class="zoom-controls-group">
+            <button id="zoomOutBtn" class="icon-button-small" title="Zoom Out (-)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <button id="zoomResetBtn" class="zoom-level-badge" title="Reset Zoom (0)">
+              <span id="zoomPercentText">100%</span>
+            </button>
+            <button id="zoomInBtn" class="icon-button-small" title="Zoom In (+)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <button id="fitWidthBtn" class="icon-button-small" title="Fit to Width">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="8 12 3 12 8 7"/><polyline points="16 12 21 12 16 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="toolbar-right">
+          <!-- Download Active Chapter/Unit PDF -->
+          <a id="downloadChapterBtn" href="#" class="btn btn-primary download-action-btn" download title="Download this unit PDF">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span class="btn-label-desktop">Download Unit PDF</span>
+          </a>
+
+          <!-- Theme Toggle (Light / Dark) -->
+          <button id="themeToggleBtn" class="icon-button" aria-label="Toggle Dark Mode" title="Toggle Light/Dark Theme (D)">
+            <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Reader Content Area -->
+      <div id="readerViewport" class="reader-viewport">
+        <!-- Chapter Header Card -->
+        <div id="chapterHeaderCard" class="chapter-header-card">
+          <div class="chapter-header-badge">
+            <span id="cardUnitBadge" class="card-badge">Unit 1</span>
+            <span id="cardPagesBadge" class="card-pages">26 Pages</span>
+            <span id="cardSizeBadge" class="card-size">13.9 MB</span>
+          </div>
+          <h2 id="cardChapterTitle" class="card-title">Chapter 1: Biology and Its Themes</h2>
+          <p id="cardChapterSummary" class="card-summary">Loading chapter overview and key concepts...</p>
+          <div id="cardConceptsList" class="card-concepts"></div>
+        </div>
+
+        <!-- High-Performance Canvas Pages Container -->
+        <div id="canvasViewerContainer" class="canvas-viewer-container">
+          <div id="pagesList" class="pages-list" role="region" aria-label="PDF Document Pages">
+            <!-- Pages will be rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Native PDF Iframe Container (Alternative Mode) -->
+        <div id="nativeViewerContainer" class="native-viewer-container" hidden>
+          <iframe id="nativeIframe" class="native-iframe" title="PDF Native Viewer" src="about:blank"></iframe>
+        </div>
+
+        <!-- Loading & Status Indicator -->
+        <div id="readerStatusOverlay" class="reader-status-overlay" hidden>
+          <div class="apple-spinner"></div>
+          <span id="readerStatusText" class="reader-status-text">Rendering pages...</span>
+        </div>
+
+        <!-- End-of-Chapter Bottom Navigation -->
+        <section id="bottomNav" class="bottom-nav-section" aria-label="End of Chapter Navigation">
+          <div class="bottom-nav-grid">
+            <button id="bottomPrevBtn" class="bottom-nav-card prev-card">
+              <div class="bottom-card-direction">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                <span>Previous Chapter</span>
+              </div>
+              <h3 id="bottomPrevTitle" class="bottom-card-title">—</h3>
+              <p id="bottomPrevSubtitle" class="bottom-card-subtitle">Beginning of book</p>
+            </button>
+
+            <button id="bottomNextBtn" class="bottom-nav-card next-card">
+              <div class="bottom-card-direction">
+                <span>Next Chapter</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+              <h3 id="bottomNextTitle" class="bottom-card-title">Chapter 2: Atoms and Molecules</h3>
+              <p id="bottomNextSubtitle" class="bottom-card-subtitle">Unit 1: The Role of Chemistry in Biology</p>
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- Floating Page Indicator Pill (Apple Books Style) -->
+      <aside id="floatingPageIndicator" class="floating-page-indicator" aria-live="polite">
+        <span id="floatingPageText">Page 1 of 26</span>
+        <span class="floating-divider">·</span>
+        <span id="floatingZoomText">100%</span>
+      </aside>
+    </main>
+  </div>
+
+  <!-- Toast Notification Capsule -->
+  <div id="toastNotification" class="toast-notification" aria-live="assertive" hidden>
+    <span id="toastMessage">Chapter updated</span>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,3 +1,8 @@
-# Ignore downloaded page assets and compiled PDFs
+# Ignore raw downloaded pages and huge single book PDF (>100MB exceeds GitHub limits)
 downloaded_pages/
-*.pdf
+biology_a_global_approach_11th_edition_part1.pdf
+
+# Allow unit PDFs for GitHub Pages hosting (<20MB each)
+!units/
+!units/*.pdf
+

@@ -1,0 +1,410 @@
+{
+  "book": {
+    "title": "Biology: A Global Approach",
+    "edition": "11th Edition (Global Edition)",
+    "authors": "Neil A. Campbell, Lisa A. Urry, Michael L. Cain, Steven A. Wasserman, Peter V. Minorsky, Jane B. Reece",
+    "publisher": "Pearson Education",
+    "fullBookPdf": "./biology_a_global_approach_11th_edition_part1.pdf",
+    "fullBookSize": "218 MB",
+    "fullBookDescription": "Complete Part 1 PDF containing introductory chapters through Unit 3 (Chapters 1-17), including all diagrams, inquiry figures, and scientific exercises.",
+    "totalAvailableChapters": 17
+  },
+  "sections": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "description": "Core themes and scientific inquiry in modern biology",
+      "units": [
+        {
+          "id": "unit-01",
+          "chapterNumber": 1,
+          "title": "Biology and Its Themes",
+          "unitGroup": "Introduction",
+          "pdf": "./units/unit_01.pdf",
+          "pages": 25,
+          "fileSize": "13.3 MB",
+          "status": "available",
+          "summary": "Explores the overarching themes of biology, the hierarchy of biological organization, evolutionary mechanisms, and the scientific inquiry process.",
+          "concepts": [
+            "1.1 The study of life reveals unifying themes",
+            "1.2 The Core Theme: Evolution accounts for the unity and diversity of life",
+            "1.3 In studying nature, scientists make observations and form and test hypotheses",
+            "1.4 Science benefits from a cooperative approach and diverse viewpoints"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit-1",
+      "title": "Unit 1: The Role of Chemistry in Biology",
+      "description": "Chemical basis of life, atoms, water, carbon diversity, biological macromolecules, and energy transformation",
+      "units": [
+        {
+          "id": "unit-02",
+          "chapterNumber": 2,
+          "title": "Atoms and Molecules",
+          "unitGroup": "Unit 1: Chemistry in Biology",
+          "pdf": "./units/unit_02.pdf",
+          "pages": 17,
+          "fileSize": "9.2 MB",
+          "status": "available",
+          "summary": "Matter, elements, isotopes, atomic structure, electron configurations, and chemical bonding (covalent, ionic, hydrogen bonds).",
+          "concepts": [
+            "2.1 Matter consists of chemical elements in pure form and in combinations called compounds",
+            "2.2 An element's properties depend on the structure of its atoms",
+            "2.3 The formation and function of molecules depend on chemical bonding",
+            "2.4 Chemical reactions make and break chemical bonds"
+          ]
+        },
+        {
+          "id": "unit-03",
+          "chapterNumber": 3,
+          "title": "The Chemistry of Water",
+          "unitGroup": "Unit 1: Chemistry in Biology",
+          "pdf": "./units/unit_03.pdf",
+          "pages": 12,
+          "fileSize": "6.7 MB",
+          "status": "available",
+          "summary": "Polarity of water, hydrogen bonding, emergent properties sustaining life, temperature moderation, and acids/bases/pH scale.",
+          "concepts": [
+            "3.1 Polar covalent bonds in water molecules result in hydrogen bonding",
+            "3.2 Four emergent properties of water contribute to Earth's suitability for life",
+            "3.3 Acidic and basic conditions affect living organisms"
+          ]
+        },
+        {
+          "id": "unit-04",
+          "chapterNumber": 4,
+          "title": "Carbon: The Basis of Molecular Diversity",
+          "unitGroup": "Unit 1: Chemistry in Biology",
+          "pdf": "./units/unit_04.pdf",
+          "pages": 10,
+          "fileSize": "4.9 MB",
+          "status": "available",
+          "summary": "Carbon skeleton architectures, hydrocarbons, isomers (structural, cis-trans, enantiomers), and characteristic functional groups.",
+          "concepts": [
+            "4.1 Organic chemistry is the study of carbon compounds",
+            "4.2 Carbon atoms can form diverse molecules by bonding to four other atoms",
+            "4.3 A few chemical groups are key to molecular function"
+          ]
+        },
+        {
+          "id": "unit-05",
+          "chapterNumber": 5,
+          "title": "Biological Macromolecules and Lipids",
+          "unitGroup": "Unit 1: Chemistry in Biology",
+          "pdf": "./units/unit_05.pdf",
+          "pages": 27,
+          "fileSize": "13.3 MB",
+          "status": "available",
+          "summary": "Structure, synthesis, and breakdown of carbohydrates, lipids, proteins (primary through quaternary structures), and nucleic acids (DNA/RNA).",
+          "concepts": [
+            "5.1 Macromolecules are polymers, built from monomers",
+            "5.2 Carbohydrates serve as fuel and building material",
+            "5.3 Lipids are a diverse group of hydrophobic molecules",
+            "5.4 Proteins include a diversity of structures, resulting in a wide range of functions",
+            "5.5 Nucleic acids store, transmit, and help express hereditary information",
+            "5.6 Genomics and proteomics have transformed biological inquiry"
+          ]
+        },
+        {
+          "id": "unit-06",
+          "chapterNumber": 6,
+          "title": "Energy and Life",
+          "unitGroup": "Unit 1: Chemistry in Biology",
+          "pdf": "./units/unit_06.pdf",
+          "pages": 21,
+          "fileSize": "11.2 MB",
+          "status": "available",
+          "summary": "Metabolism, laws of thermodynamics, free energy changes (delta G), ATP structure and phosphorylation, enzyme kinetics, and allosteric regulation.",
+          "concepts": [
+            "6.1 An organism's metabolism transforms matter and energy, subject to laws of thermodynamics",
+            "6.2 Free-energy change tells whether a reaction occurs spontaneously",
+            "6.3 ATP powers cellular work by coupling exergonic to endergonic reactions",
+            "6.4 Enzymes speed up metabolic reactions by lowering energy barriers",
+            "6.5 Regulation of enzyme activity helps control metabolism"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit-2",
+      "title": "Unit 2: Cell Biology",
+      "description": "Structure and function of prokaryotic & eukaryotic cells, membranes, cell communication, energy conversion, and division",
+      "units": [
+        {
+          "id": "unit-07",
+          "chapterNumber": 7,
+          "title": "Cell Structure and Function",
+          "unitGroup": "Unit 2: Cell Biology",
+          "pdf": "./units/unit_07.pdf",
+          "pages": 34,
+          "fileSize": "17.9 MB",
+          "status": "available",
+          "summary": "Microscopy, organelle structures, endomembrane system, nucleus, ribosomes, mitochondria, chloroplasts, cytoskeleton, and extracellular matrices.",
+          "concepts": [
+            "7.1 Biologists use microscopes and biochemistry to study cells",
+            "7.2 Eukaryotic cells have internal membranes that compartmentalize their functions",
+            "7.3 The eukaryotic cell's genetic instructions are housed in the nucleus and carried out by ribosomes",
+            "7.4 The endomembrane system regulates protein traffic and performs metabolic functions",
+            "7.5 Mitochondria and chloroplasts change energy from one form to another",
+            "7.6 The cytoskeleton coordinates cellular movement and structure",
+            "7.7 Extracellular components and cellular junctions coordinate cell activities"
+          ]
+        },
+        {
+          "id": "unit-08",
+          "chapterNumber": 8,
+          "title": "Cell Membranes",
+          "unitGroup": "Unit 2: Cell Biology",
+          "pdf": "./units/unit_08.pdf",
+          "pages": 18,
+          "fileSize": "9.7 MB",
+          "status": "available",
+          "summary": "Fluid mosaic model, membrane fluidity, transport proteins, passive transport (diffusion & osmosis), active transport (pumps & cotransport), and bulk transport.",
+          "concepts": [
+            "8.1 Cellular membranes are fluid mosaics of lipids and proteins",
+            "8.2 Membrane structure results in selective permeability",
+            "8.3 Passive transport is diffusion of a substance across a membrane with no energy investment",
+            "8.4 Active transport uses energy to move solutes against their gradients",
+            "8.5 Bulk transport across the plasma membrane occurs by exocytosis and endocytosis"
+          ]
+        },
+        {
+          "id": "unit-09",
+          "chapterNumber": 9,
+          "title": "Cellular Signaling",
+          "unitGroup": "Unit 2: Cell Biology",
+          "pdf": "./units/unit_09.pdf",
+          "pages": 22,
+          "fileSize": "11.6 MB",
+          "status": "available",
+          "summary": "Signal transduction paradigms: reception (GPCRs, RTKs, ion channels), intracellular cascades (phosphorylation, cAMP, Ca2+), cellular responses, and apoptosis.",
+          "concepts": [
+            "9.1 External signals are converted to responses within the cell",
+            "9.2 Reception: A signaling molecule binds to a receptor protein, causing shape change",
+            "9.3 Transduction: Cascades of molecular interactions relay signals from receptors to target molecules",
+            "9.4 Response: Cell signaling leads to regulation of transcription or cytoplasmic activities",
+            "9.5 Apoptosis integrates multiple cell-signaling pathways"
+          ]
+        },
+        {
+          "id": "unit-10",
+          "chapterNumber": 10,
+          "title": "Cell Respiration",
+          "unitGroup": "Unit 2: Cell Biology",
+          "pdf": "./units/unit_10.pdf",
+          "pages": 23,
+          "fileSize": "11.8 MB",
+          "status": "available",
+          "summary": "Catabolic pathways, redox reactions, glycolysis, pyruvate oxidation, citric acid cycle, oxidative phosphorylation (ETC and chemiosmosis), and fermentation.",
+          "concepts": [
+            "10.1 Catabolic pathways yield energy by oxidizing organic fuels",
+            "10.2 Glycolysis harvests chemical energy by oxidizing glucose to pyruvate",
+            "10.3 After pyruvate is oxidized, citric acid cycle completes energy-yielding oxidation",
+            "10.4 During oxidative phosphorylation, chemiosmosis couples electron transport to ATP synthesis",
+            "10.5 Fermentation and anaerobic respiration enable cells to produce ATP without oxygen",
+            "10.6 Glycolysis and the citric acid cycle connect to many other metabolic pathways"
+          ]
+        },
+        {
+          "id": "unit-11",
+          "chapterNumber": 11,
+          "title": "Photosynthetic Processes",
+          "unitGroup": "Unit 2: Cell Biology",
+          "pdf": "./units/unit_11.pdf",
+          "pages": 25,
+          "fileSize": "13.0 MB",
+          "status": "available",
+          "summary": "Chloroplast ultrastructure, electromagnetic spectrum, chlorophylls, light reactions (photosystems II & I, photophosphorylation), Calvin cycle, and C3/C4/CAM adaptations.",
+          "concepts": [
+            "11.1 Photosynthesis converts light energy to chemical energy of food",
+            "11.2 The light reactions convert solar energy to chemical energy of ATP and NADPH",
+            "11.3 The Calvin cycle uses chemical energy of ATP and NADPH to reduce CO2 to sugar",
+            "11.4 Alternative mechanisms of carbon fixation have evolved in hot, arid climates"
+          ]
+        },
+        {
+          "id": "unit-12",
+          "chapterNumber": 12,
+          "title": "Mitosis",
+          "unitGroup": "Unit 2: Cell Biology",
+          "pdf": "./units/unit_12.pdf",
+          "pages": 19,
+          "fileSize": "10.0 MB",
+          "status": "available",
+          "summary": "Cell cycle phases (G1, S, G2, M), mitotic apparatus and chromosome distribution, cytokinesis, cell cycle checkpoints (cyclins & CDKs), and cancer loss of control.",
+          "concepts": [
+            "12.1 Most cell division results in genetically identical daughter cells",
+            "12.2 The mitotic phase alternates with interphase in the cell cycle",
+            "12.3 The eukaryotic cell cycle is regulated by a molecular control system"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit-3",
+      "title": "Unit 3: The Genetic Basis of Life",
+      "description": "Meiosis, Mendelian genetics, chromosomal inheritance, DNA replication, gene expression, and modern biotechnology",
+      "units": [
+        {
+          "id": "unit-13",
+          "chapterNumber": 13,
+          "title": "Sexual Life Cycles and Meiosis",
+          "unitGroup": "Unit 3: Genetics",
+          "pdf": "./units/unit_13.pdf",
+          "pages": 16,
+          "fileSize": "8.2 MB",
+          "status": "available",
+          "summary": "Heredity, homologous chromosomes, meiosis I and II stages, crossing over, and origins of genetic variation among offspring.",
+          "concepts": [
+            "13.1 Offspring acquire genes from parents by inheriting chromosomes",
+            "13.2 Fertilization and meiosis alternate in sexual life cycles",
+            "13.3 Meiosis reduces the number of chromosome sets from diploid to haploid",
+            "13.4 Genetic variation produced in sexual life cycles contributes to evolution"
+          ]
+        },
+        {
+          "id": "unit-14",
+          "chapterNumber": 14,
+          "title": "Mendelian Genetics",
+          "unitGroup": "Unit 3: Genetics",
+          "pdf": "./units/unit_14.pdf",
+          "pages": 25,
+          "fileSize": "14.1 MB",
+          "status": "available",
+          "summary": "Mendel's experimental model, law of segregation, law of independent assortment, Punnett squares, dominance relationships, multiple alleles, pleiotropy, epistasis, and human pedigrees.",
+          "concepts": [
+            "14.1 Mendel used the scientific approach to identify two laws of inheritance",
+            "14.2 Probability laws govern Mendelian inheritance",
+            "14.3 Inheritance patterns are often more complex than predicted by simple Mendelian genetics",
+            "14.4 Many human traits follow Mendelian patterns of inheritance"
+          ]
+        },
+        {
+          "id": "unit-15",
+          "chapterNumber": 15,
+          "title": "Linkage and Chromosomes",
+          "unitGroup": "Unit 3: Genetics",
+          "pdf": "./units/unit_15.pdf",
+          "pages": 20,
+          "fileSize": "11.2 MB",
+          "status": "available",
+          "summary": "Chromosomal theory of inheritance, sex-linked genes, X inactivation (Barr bodies), linked genes, recombination frequencies, genetic maps, chromosomal aberrations (aneuploidy, polyploidy), and genomic imprinting.",
+          "concepts": [
+            "15.1 Mendelian inheritance has its physical basis in the behavior of chromosomes",
+            "15.2 Sex-linked genes exhibit unique patterns of inheritance",
+            "15.3 Linked genes tend to be inherited together because they are located near each other on the same chromosome",
+            "15.4 Alterations of chromosome number or structure cause some genetic disorders",
+            "15.5 Some inheritance patterns are exceptions to standard chromosome theory"
+          ]
+        },
+        {
+          "id": "unit-16",
+          "chapterNumber": 16,
+          "title": "Nucleic Acids and Inheritance",
+          "unitGroup": "Unit 3: Genetics",
+          "pdf": "./units/unit_16.pdf",
+          "pages": 21,
+          "fileSize": "10.8 MB",
+          "status": "available",
+          "summary": "Identification of DNA as the genetic material (Griffith, Hershey-Chase), Watson-Crick double helix, semiconservative replication mechanism, DNA polymerases, replication fork enzymes, and proofreading/repair.",
+          "concepts": [
+            "16.1 DNA is the genetic material",
+            "16.2 Many proteins work together in DNA replication and repair",
+            "16.3 A chromosome consists of a DNA molecule packed together with proteins"
+          ]
+        },
+        {
+          "id": "unit-17",
+          "chapterNumber": 17,
+          "title": "Expression of Genes",
+          "unitGroup": "Unit 3: Genetics",
+          "pdf": "./units/unit_17.pdf",
+          "pages": 15,
+          "fileSize": "8.3 MB",
+          "status": "available",
+          "summary": "Central dogma (DNA -> RNA -> Protein), genetic code and codons, transcription (promoters, RNA polymerase, elongation), post-transcriptional processing (5' cap, poly-A tail, RNA splicing), translation (tRNA, ribosomes, polypeptide elongation), and mutations.",
+          "concepts": [
+            "17.1 Genes specify proteins via transcription and translation",
+            "17.2 Transcription is the DNA-directed synthesis of RNA",
+            "17.3 Eukaryotic cells modify RNA after transcription",
+            "17.4 Translation is the RNA-directed synthesis of a polypeptide",
+            "17.5 Mutations of one or a few nucleotides can affect protein structure and function"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "future-units",
+      "title": "Future Units (Part 2 - Coming Soon)",
+      "description": "Chapters 18 through 56 covering Gene Expression Control, Biotechnology, Evolution, Diversity, Plant & Animal Biology, and Ecology.",
+      "units": [
+        {
+          "id": "unit-18",
+          "chapterNumber": 18,
+          "title": "Control of Gene Expression",
+          "unitGroup": "Unit 3: Genetics",
+          "status": "upcoming",
+          "summary": "Operons in bacteria, eukaryotic chromatin remodeling, transcription factors, noncoding RNAs, and cancer genetics."
+        },
+        {
+          "id": "unit-19",
+          "chapterNumber": 19,
+          "title": "DNA Technology",
+          "unitGroup": "Unit 3: Genetics",
+          "status": "upcoming",
+          "summary": "Gene cloning, PCR, DNA sequencing, CRISPR-Cas9 genome editing, and forensic applications."
+        },
+        {
+          "id": "unit-20",
+          "chapterNumber": 20,
+          "title": "The Evolution of Genomes",
+          "unitGroup": "Unit 3: Genetics",
+          "status": "upcoming",
+          "summary": "Comparative genomics, noncoding DNA, multigene families, and duplication in genome evolution."
+        },
+        {
+          "id": "unit-21",
+          "chapterNumber": 21,
+          "title": "Unit 4: Evolution (Chapters 21-25)",
+          "unitGroup": "Unit 4: Evolution",
+          "status": "upcoming",
+          "summary": "Darwinian evolution, phylogenetics, population genetics, Hardy-Weinberg equilibrium, speciation, and macroevolution."
+        },
+        {
+          "id": "unit-26",
+          "chapterNumber": 26,
+          "title": "Unit 5: The Diversity of Life (Chapters 26-34)",
+          "unitGroup": "Unit 5: Diversity",
+          "status": "upcoming",
+          "summary": "Viruses, prokaryotes, protists, origin of land plants, fungi, and the radiation of invertebrate and vertebrate animals."
+        },
+        {
+          "id": "unit-35",
+          "chapterNumber": 35,
+          "title": "Unit 6: Plant Form and Function (Chapters 35-39)",
+          "unitGroup": "Unit 6: Plants",
+          "status": "upcoming",
+          "summary": "Plant anatomy, xylem and phloem transport, mineral nutrition, angiosperm reproduction, and plant hormones."
+        },
+        {
+          "id": "unit-40",
+          "chapterNumber": 40,
+          "title": "Unit 7: Animal Form and Function (Chapters 40-50)",
+          "unitGroup": "Unit 7: Animals",
+          "status": "upcoming",
+          "summary": "Homeostasis, nutrition, cardiovascular systems, immunology, osmoregulation, endocrinology, reproduction, neurobiology, and sensory physiology."
+        },
+        {
+          "id": "unit-51",
+          "chapterNumber": 51,
+          "title": "Unit 8: The Ecology of Life (Chapters 51-56)",
+          "unitGroup": "Unit 8: Ecology",
+          "status": "upcoming",
+          "summary": "Biosphere ecology, behavioral ecology, population dynamics, community interactions, biogeochemical cycles, and global conservation."
+        }
+      ]
+    }
+  ]
+}
