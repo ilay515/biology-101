@@ -1,0 +1,3 @@
+# Ignore downloaded page assets and compiled PDFs
+downloaded_pages/
+*.pdf
