@@ -535,6 +535,14 @@
       const baseViewport = page.getViewport({ scale: state.zoomLevel });
       const pixelRatio = window.devicePixelRatio || 1;
 
+      // On mobile viewports, fit page smoothly to reader container width
+      const viewportPadding = window.innerWidth <= 600 ? 16 : (window.innerWidth <= 860 ? 32 : 64);
+      const containerWidth = elements.readerViewport.clientWidth - viewportPadding;
+      const displayWidth = (window.innerWidth <= 860 && containerWidth > 0 && containerWidth < baseViewport.width)
+        ? containerWidth
+        : baseViewport.width;
+      const displayHeight = (displayWidth / baseViewport.width) * baseViewport.height;
+
       // Create or reuse canvas
       let canvas = wrapper.querySelector('canvas');
       if (!canvas) {
@@ -545,11 +553,11 @@
       // High-resolution canvas dimensions
       canvas.width = Math.floor(baseViewport.width * pixelRatio);
       canvas.height = Math.floor(baseViewport.height * pixelRatio);
-      canvas.style.width = `${Math.floor(baseViewport.width)}px`;
-      canvas.style.height = `${Math.floor(baseViewport.height)}px`;
+      canvas.style.width = `${Math.floor(displayWidth)}px`;
+      canvas.style.height = `${Math.floor(displayHeight)}px`;
 
-      wrapper.style.width = `${Math.floor(baseViewport.width)}px`;
-      wrapper.style.height = `${Math.floor(baseViewport.height)}px`;
+      wrapper.style.width = `${Math.floor(displayWidth)}px`;
+      wrapper.style.height = `${Math.floor(displayHeight)}px`;
       wrapper.classList.remove('page-placeholder');
 
       const ctx = canvas.getContext('2d', { alpha: false });
@@ -911,6 +919,17 @@
       scrollTimer = setTimeout(() => {
         elements.floatingPageIndicator.classList.add('faded');
       }, 2500);
+    }, { passive: true });
+
+    // Window resize handler (handles mobile orientation change)
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (state.pdfDoc && window.innerWidth <= 860) {
+          reRenderPagesOnZoom();
+        }
+      }, 250);
     }, { passive: true });
   }
 
