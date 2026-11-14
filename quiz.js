@@ -428,28 +428,31 @@
   }
 
   /**
-   * Toggles selection of an option index
+   * Toggles selection of an option index (Single-choice selection)
    * @param {number} optIndex
    * @param {HTMLElement} optionEl
    */
   function toggleOption(optIndex, optionEl) {
     if (isAnswerChecked) return;
 
+    // Deselect all previous options
+    const allOptions = domElements.optionsList.querySelectorAll('.quiz-option');
+    allOptions.forEach((el) => {
+      el.classList.remove('selected');
+      el.setAttribute('aria-checked', 'false');
+      const ind = el.querySelector('.quiz-option-indicator');
+      if (ind) ind.innerHTML = '';
+    });
+    selectedIndices.clear();
+
+    // Select the clicked option
+    selectedIndices.add(optIndex);
+    optionEl.classList.add('selected');
+    optionEl.setAttribute('aria-checked', 'true');
     const indicator = optionEl.querySelector('.quiz-option-indicator');
+    if (indicator) indicator.innerHTML = CHECK_ICON_SVG;
 
-    if (selectedIndices.has(optIndex)) {
-      selectedIndices.delete(optIndex);
-      optionEl.classList.remove('selected');
-      optionEl.setAttribute('aria-checked', 'false');
-      if (indicator) indicator.innerHTML = '';
-    } else {
-      selectedIndices.add(optIndex);
-      optionEl.classList.add('selected');
-      optionEl.setAttribute('aria-checked', 'true');
-      if (indicator) indicator.innerHTML = CHECK_ICON_SVG;
-    }
-
-    // "בדוק תשובה" button only enabled when at least 1 option selected
+    // "בדוק תשובה" button enabled when 1 option selected
     if (domElements && domElements.actionBtn) {
       domElements.actionBtn.disabled = selectedIndices.size === 0;
     }
@@ -490,12 +493,12 @@
     rawOptions.forEach((opt, optIndex) => {
       const optEl = document.createElement('div');
       optEl.className = 'quiz-option';
-      optEl.setAttribute('role', 'checkbox');
+      optEl.setAttribute('role', 'radio');
       optEl.setAttribute('aria-checked', 'false');
       optEl.setAttribute('tabindex', '0');
 
       const indicator = document.createElement('span');
-      indicator.className = 'quiz-option-indicator quiz-checkbox-indicator';
+      indicator.className = 'quiz-option-indicator quiz-radio-indicator';
 
       const textSpan = document.createElement('span');
       textSpan.className = 'quiz-option-text';

@@ -1909,7 +1909,7 @@ a {
 .quiz-option-indicator {
   width: 20px;
   height: 20px;
-  border-radius: 4px;
+  border-radius: 50%;
   border: 2px solid var(--border-strong);
   display: flex;
   align-items: center;
